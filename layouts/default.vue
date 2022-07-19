@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-20 00:36:19
+ * @LastEditTime: 2022-07-20 01:17:17
  * @Description: 
  * @Date: 2022-07-19 22:22:24
  * @Author: wangshan
@@ -15,16 +15,7 @@
 #app {
   height: 100vh;
 }
-@media screen and (min-width: 1200px) {
-  .container {
-    width: 1200px;
-    height: 100%;
-    margin: auto;
-  }
-  .container {
-    font-size: 20px;
-  }
-}
+
 .nav {
   padding: 12px 120px;
   box-shadow: 0px 0px 12px -5px #777;
