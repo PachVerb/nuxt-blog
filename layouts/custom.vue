@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-19 22:39:10
+ * @LastEditTime: 2022-07-19 23:03:30
  * @Description: 
  * @Date: 2022-07-18 21:37:28
  * @Author: wangshan
@@ -11,7 +11,7 @@ definePageMeta({
 });
 </script> -->
 <template>
-  <div>
+  <div style="height: 100%">
     <div class="nav">
       <slot name="nav" />
     </div>
@@ -30,6 +30,9 @@ definePageMeta({
   }
   .container {
     font-size: 20px;
+  }
+  .nav {
+    margin: 0 120px;
   }
 }
 </style>
