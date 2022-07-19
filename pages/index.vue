@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-20 01:02:49
+ * @LastEditTime: 2022-07-20 01:14:50
  * @Description: 
  * @Date: 2022-07-18 21:49:09
  * @Author: wangshan
@@ -37,6 +37,8 @@ definePageMeta({
 }
 .bg h1 {
   padding: 60px 0;
+  font-size: 60px;
+  font-weight: bolder;
   box-sizing: border-box;
   text-align: center;
 }

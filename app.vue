@@ -34,7 +34,7 @@ body {
   height: 100%;
 }
 .nav {
-  height: 60px;
+  height: 80px;
   box-sizing: border-box;
   padding: 12px 120px;
   box-shadow: 0px 0px 12px -5px #777;
@@ -53,5 +53,35 @@ body {
 .h-nav .logo img {
   width: 100%;
   height: 100%;
+}
+.menus a {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 100%;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* 文字下划线效果 */
+.menus a {
+  position: relative;
+  text-decoration: none;
+  font-size: 20px;
+  color: #333;
+}
+.menus a:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: #4285f4;
+  transform: scale(0);
+  transition: all 0.3s;
+}
+.menus a:hover:before {
+  transform: scale(1);
 }
 </style>
