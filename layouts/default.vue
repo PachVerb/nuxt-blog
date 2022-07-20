@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-20 01:17:17
+ * @LastEditTime: 2022-07-20 22:06:31
  * @Description: 
  * @Date: 2022-07-19 22:22:24
  * @Author: wangshan
@@ -13,7 +13,7 @@
 </template>
 <style scoped>
 #app {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .nav {

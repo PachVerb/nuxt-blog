@@ -13,10 +13,25 @@
         </div>
       </div>
       <div class="c-nav h-nav column">
-        <button class="menu-trigger" @click="toggleMenu"></button>
-        <div class="logo">
-          <img src="~/assets/imgs/logo.svg" alt="" />
+        <div class="h-bar">
+          <p class="c-menu-box" @click="toggleMenu">
+            <i
+              v-if="!isShow"
+              class="iconfont icon-menu-s"
+              style="font-size: 30px"
+            ></i>
+            <i
+              v-if="isShow"
+              class="iconfont icon-fork"
+              style="font-size: 30px"
+            ></i>
+          </p>
+
+          <div class="logo">
+            <img src="~/assets/imgs/logo.svg" alt="" />
+          </div>
         </div>
+
         <div
           class="c-menus animate__animated"
           :class="{
@@ -55,8 +70,8 @@ function toggleMenu() {
 </script>
 
 <style>
+@import url(./assets/icon/iconfont.css);
 @import url(https://fonts.googleapis.com/css?family=Oxygen:400,700);
-
 * {
   margin: 0;
 }
@@ -121,21 +136,40 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #4285f4;
 }
 .c-nav .logo {
   padding: 12px;
-  margin: auto !important;
+  flex: 2;
+  /* margin: auto !important; */
+}
+.c-nav .logo img {
+  width: 120px;
+  height: 50px;
 }
 .c-nav .c-menus {
-  display: none;
+  /* display: none; */
   width: 100%;
 }
 .c-nav .c-menus a {
   display: block;
   text-decoration: none;
   width: 100% !important;
-  text-align: center;
+  /* text-align: center; */
   margin: 24px 0;
+  padding-left: 120px;
+}
+.c-nav .h-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.c-nav .h-bar .c-menu-box {
+  /* display: flex;
+  align-items: center; */
+  height: 100%;
+  flex: 0;
+  padding: 21px 10px;
 }
 .column {
   display: none;

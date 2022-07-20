@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-20 01:01:51
+ * @LastEditTime: 2022-07-20 22:11:54
  * @Description: 
  * @Date: 2022-07-18 21:37:28
  * @Author: wangshan
@@ -18,6 +18,8 @@ definePageMeta({
 
 <style scoped>
 .main {
-  height: calc(100% - 60px);
+  min-height: calc(100vh - 60px);
+  background: -webkit-linear-gradient(top, white, lightblue, skyblue);
+  padding: 24px;
 }
 </style>

@@ -1,42 +1,13 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Blog
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+> nuxt 博客
 
-## Setup
+## 特性
 
-Make sure to install the dependencies:
+## FAQ
 
-```bash
-# yarn
-yarn install
+#### CSS 特性相关
 
-# npm
-npm install
+- box-sizing 原理
 
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+#### js
