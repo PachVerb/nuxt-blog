@@ -1,10 +1,20 @@
 <!--
- * @LastEditTime: 2022-07-18 21:41:21
+ * @LastEditTime: 2022-07-20 23:47:36
  * @Description: 
  * @Date: 2022-07-18 21:41:20
  * @Author: wangshan
  * @LastEditors: wangshan
 -->
 <template>
-  <h1>hello world</h1>
+  <div>
+    <!-- <Entry :blogs=""></Entry> -->
+  </div>
 </template>
+
+<script setup lang="ts">
+const blogs = ref(null);
+
+onBeforeMount(() => {
+  console.log(blogs);
+});
+</script>

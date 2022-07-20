@@ -112,6 +112,10 @@ function toggleMenu() {
 * {
   margin: 0;
 }
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
 html,
 body {
   width: 100%;

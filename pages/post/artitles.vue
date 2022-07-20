@@ -1,12 +1,20 @@
 <!--
- * @LastEditTime: 2022-07-20 19:58:05
+ * @LastEditTime: 2022-07-21 00:13:07
  * @Description: 
  * @Date: 2022-07-18 21:41:25
  * @Author: wangshan
  * @LastEditors: wangshan
 -->
 <template>
-  <h2>hello world</h2>
+  <Entry v-for="(item, idx) in blogs" :key="idx" :artitle="item"></Entry>
 </template>
+<script setup lang="ts">
+const blogs = ref(null);
 
+onMounted(async () => {
+  const res = await $fetch("/api/artitles");
+  blogs.value = res.blogs;
+  //   console.log(blogs.value);
+});
+</script>
 <style scoped></style>

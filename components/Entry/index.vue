@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-20 23:37:39
+ * @LastEditTime: 2022-07-21 00:36:27
  * @Description: 
  * @Date: 2022-07-20 22:53:49
  * @Author: wangshan
@@ -8,27 +8,28 @@
 <template>
   <div>
     <div class="content">
-      <div class="meta-container">{{ blogs.title }}</div>
+      <div class="meta-container">{{ artitle.title }}</div>
       <div class="content-wrapper">
         <div class="content-main">
           <div class="title-row">
-            <div class="title">{{ blogs.blog.title }}</div>
-            <div class="sub-title">{{ blogs.blog.subtitle }}</div>
+            <a class="title" href="javascript: void(0)">{{
+              artitle.blog.title
+            }}</a>
+            <a class="sub-title" href="javascript: void(0)">{{
+              artitle.blog.subtitle
+            }}</a>
           </div>
 
-          <div class="abstract">{{ blogs.blog.abstract }}</div>
+          <div class="abstract">{{ artitle.blog.abstract }}</div>
 
           <div class="action-list">
-            <div class="views">{{ props.blogs.views }}</div>
-            <div class="zan">{{ props.blogs.zans }}</div>
-            <div class="comment">{{ props.blogs.comment }}</div>
+            <div class="views">{{ artitle.tools.views }}</div>
+            <div class="zan">{{ artitle.tools.zans }}</div>
+            <div class="comment">{{ artitle.tools.comment }}</div>
           </div>
         </div>
 
-        <img
-          src="	https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/…d8~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?"
-          alt="alt"
-        />
+        <img src="~/assets/imgs/01.png" alt="alt" />
       </div>
     </div>
   </div>
@@ -45,7 +46,9 @@ interface Posts {
     comment: number;
   };
 }
-const props = defineProps({ blogs: Object });
+const a = defineProps({ artitle: Object });
+
+console.log(a.artitle.title, a.artitle.blog, a.artitle.tools);
 
 // @methods
 </script>
@@ -55,11 +58,15 @@ const props = defineProps({ blogs: Object });
   padding: 12px 20px 0;
   cursor: pointer;
 }
+.meta-container {
+  font-size: 13px;
+  color: #555;
+}
 .content-wrapper {
   display: flex;
   padding-bottom: 12px;
   margin-top: 10px;
-  border: 1px solid rgba(228, 230, 235, 0.5);
+  border-bottom: 1px solid rgba(228, 230, 235, 0.5);
 }
 .content-wrapper img {
   flex: 0 0 auto;
@@ -70,8 +77,31 @@ const props = defineProps({ blogs: Object });
   border-radius: 2px;
 }
 .content-wrapper .content-main .title-row {
-  display: flex;
   margin-bottom: 8px;
+}
+
+.content-wrapper .content-main .title-row .title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1d2129;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.content-wrapper .content-main .title-row .sub-title {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 22px;
+  color: #86909c;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .content-wrapper .content-main .abstract {
