@@ -1,12 +1,14 @@
 <!--
- * @LastEditTime: 2022-07-21 00:13:07
+ * @LastEditTime: 2022-07-21 01:05:32
  * @Description: 
  * @Date: 2022-07-18 21:41:25
  * @Author: wangshan
  * @LastEditors: wangshan
 -->
 <template>
-  <Entry v-for="(item, idx) in blogs" :key="idx" :artitle="item"></Entry>
+  <div class="entry-list">
+    <Entry v-for="(item, idx) in blogs" :key="idx" :artitle="item"></Entry>
+  </div>
 </template>
 <script setup lang="ts">
 const blogs = ref(null);
@@ -17,4 +19,8 @@ onMounted(async () => {
   //   console.log(blogs.value);
 });
 </script>
-<style scoped></style>
+<style scoped>
+.entry-list {
+  background-color: #fff;
+}
+</style>

@@ -116,6 +116,17 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+ul {
+  list-style: none;
+  padding: 0;
+}
+html {
+  font-size: 12px;
+  word-break: break-word;
+  text-rendering: optimizeLegibility;
+  color: #333;
+  background-color: #f4f5f5;
+}
 html,
 body {
   width: 100%;

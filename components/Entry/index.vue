@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-21 00:36:27
+ * @LastEditTime: 2022-07-21 00:51:49
  * @Description: 
  * @Date: 2022-07-20 22:53:49
  * @Author: wangshan
@@ -23,9 +23,18 @@
           <div class="abstract">{{ artitle.blog.abstract }}</div>
 
           <div class="action-list">
-            <div class="views">{{ artitle.tools.views }}</div>
-            <div class="zan">{{ artitle.tools.zans }}</div>
-            <div class="comment">{{ artitle.tools.comment }}</div>
+            <div class="item views">
+              <i class="iconfont icon-view"></i>
+              <span>{{ artitle.tools.views }}</span>
+            </div>
+            <div class="item zan">
+              <i class="iconfont icon-zan"></i>
+              <span>{{ artitle.tools.zans }}</span>
+            </div>
+            <div class="item comment">
+              <i class="iconfont icon-aui-icon-comment"></i>
+              <span>{{ artitle.tools.comment }}</span>
+            </div>
           </div>
         </div>
 
@@ -111,5 +120,24 @@ console.log(a.artitle.title, a.artitle.blog, a.artitle.tools);
 .content-wrapper .content-main .action-list {
   display: flex;
   align-items: center;
+}
+.action-list .item {
+  display: flex;
+  align-items: center;
+}
+.action-list .item {
+  position: relative;
+  margin-right: 20px;
+  font-size: 13px;
+  line-height: 20px;
+  color: #4e5969;
+  flex-shrink: 0;
+}
+
+.action-list .item i {
+  font-size: 16px;
+}
+.action-list .item span {
+  margin-left: 4px;
 }
 </style>
