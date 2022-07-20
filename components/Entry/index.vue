@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-21 00:51:49
+ * @LastEditTime: 2022-07-21 01:42:57
  * @Description: 
  * @Date: 2022-07-20 22:53:49
  * @Author: wangshan
@@ -12,12 +12,18 @@
       <div class="content-wrapper">
         <div class="content-main">
           <div class="title-row">
-            <a class="title" href="javascript: void(0)">{{
-              artitle.blog.title
-            }}</a>
-            <a class="sub-title" href="javascript: void(0)">{{
-              artitle.blog.subtitle
-            }}</a>
+            <a
+              @click="handleViewDetail"
+              class="title"
+              href="javascript: void(0)"
+              >{{ artitle.blog.title }}</a
+            >
+            <a
+              @click="handleViewDetail"
+              class="sub-title"
+              href="javascript: void(0)"
+              >{{ artitle.blog.subtitle }}</a
+            >
           </div>
 
           <div class="abstract">{{ artitle.blog.abstract }}</div>
@@ -60,6 +66,14 @@ const a = defineProps({ artitle: Object });
 console.log(a.artitle.title, a.artitle.blog, a.artitle.tools);
 
 // @methods
+function handleViewDetail() {
+  return navigateTo({
+    path: "/post/detail",
+    params: {
+      id: "123",
+    },
+  });
+}
 </script>
 
 <style scoped>

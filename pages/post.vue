@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-21 01:20:54
+ * @LastEditTime: 2022-07-21 01:42:42
  * @Description: 
  * @Date: 2022-07-19 23:56:46
  * @Author: wangshan
@@ -39,6 +39,8 @@
     </aside>
   </div>
 </template>
+
+<script setup></script>
 
 <style scoped>
 .bg {
