@@ -6,10 +6,20 @@
           <img src="~/assets/imgs/logo.svg" alt="" />
         </div>
         <div class="menus">
-          <RouterLink to="/"><span>首页</span></RouterLink>
-          <RouterLink to="/post/artitles"><span>日志</span></RouterLink>
-          <RouterLink to="going"><span>旅游</span></RouterLink>
-          <RouterLink to="photo"><span>摄影</span></RouterLink>
+          <!-- <RouterLink :class="link" to="/"><span>首页</span></RouterLink>
+          <RouterLink class="link" to="/post/artitles"
+            ><span>日志</span></RouterLink
+          >
+          <RouterLink class="link" to="going"><span>旅游</span></RouterLink>
+          <RouterLink class="link" to="photo"><span>摄影</span></RouterLink> -->
+          <RouterLink
+            v-for="(item, idx) in links"
+            :key="item.path"
+            :class="{ link: item.isactive }"
+            :to="item.path"
+            @click="handleActive(item, idx)"
+            ><span>{{ item.name }}</span></RouterLink
+          >
         </div>
       </div>
       <div class="c-nav h-nav column">
@@ -36,10 +46,12 @@
             animate__lightSpeedOutLeft: !iShow,
           }"
         >
-          <RouterLink to="/"><span>首页</span></RouterLink>
-          <RouterLink to="/post/artitles"><span>日志</span></RouterLink>
-          <RouterLink to="going"><span>旅游</span></RouterLink>
-          <RouterLink to="photo"><span>摄影</span></RouterLink>
+          <RouterLink class="link" to="/"><span>首页</span></RouterLink>
+          <RouterLink class="link" to="/post/artitles"
+            ><span>日志</span></RouterLink
+          >
+          <RouterLink class="link" to="going"><span>旅游</span></RouterLink>
+          <RouterLink class="link" to="photo"><span>摄影</span></RouterLink>
         </div>
       </div>
     </template>
@@ -53,6 +65,34 @@ definePageMeta({
   title: "app",
 });
 const iShow = ref(false);
+
+const links = ref([
+  {
+    path: "/",
+    isactive: false,
+    name: "首页",
+  },
+  {
+    path: "/post/artitles",
+    isactive: false,
+    name: "日志",
+  },
+  {
+    path: "/going",
+    isactive: false,
+    name: "旅游",
+  },
+  {
+    path: "/photo",
+    isactive: false,
+    name: "摄影",
+  },
+]);
+
+function handleActive(item, idx) {
+  console.log(item, idx, item[idx]);
+  links.value[idx].isactive = !item.isactive;
+}
 
 // togglle-menu
 function toggleMenu() {
@@ -114,7 +154,7 @@ body {
   font-size: 20px;
   color: #333;
 }
-.menus a:before {
+.menus .link:before {
   content: "";
   position: absolute;
   left: 0;
@@ -125,9 +165,10 @@ body {
   transform: scale(0);
   transition: all 0.3s;
 }
-.menus a:hover:before {
+.menus .link:hover:before {
   transform: scale(1);
 }
+
 .c-nav {
   position: fixed;
   width: 100%;

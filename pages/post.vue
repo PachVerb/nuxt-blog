@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-20 01:17:31
+ * @LastEditTime: 2022-07-20 22:27:51
  * @Description: 
  * @Date: 2022-07-19 23:56:46
  * @Author: wangshan
@@ -14,7 +14,7 @@
 <style scoped>
 @media screen and (min-width: 1200px) {
   .container {
-    width: 1200px;
+    max-width: 960px;
     height: 100%;
     margin: auto;
   }
