@@ -16,15 +16,11 @@
         <div class="h-bar">
           <p class="c-menu-box" @click="toggleMenu">
             <i
-              v-if="!isShow"
+              v-if="!iShow"
               class="iconfont icon-menu-s"
               style="font-size: 30px"
             ></i>
-            <i
-              v-if="isShow"
-              class="iconfont icon-fork"
-              style="font-size: 30px"
-            ></i>
+            <i v-else class="iconfont icon-fork" style="font-size: 30px"></i>
           </p>
 
           <div class="logo">
@@ -33,6 +29,7 @@
         </div>
 
         <div
+          v-show="iShow"
           class="c-menus animate__animated"
           :class="{
             animate__lightSpeedInLeft: iShow,
@@ -144,6 +141,7 @@ body {
   /* margin: auto !important; */
 }
 .c-nav .logo img {
+  margin: auto;
   width: 120px;
   height: 50px;
 }

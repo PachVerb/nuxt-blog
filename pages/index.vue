@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-20 22:07:09
+ * @LastEditTime: 2022-07-20 22:21:42
  * @Description: 
  * @Date: 2022-07-18 21:49:09
  * @Author: wangshan
@@ -35,6 +35,11 @@ definePageMeta({
 /* .bg {
   background: -webkit-linear-gradient(top, white, lightblue, skyblue);
 } */
+@media screen and (max-width: 500px) {
+  .box {
+    margin-top: 120px !important;
+  }
+}
 .bg h1 {
   padding: 60px 0 0 0;
   font-size: 60px;
@@ -43,8 +48,10 @@ definePageMeta({
   text-align: center;
 }
 .bg > .box {
+  box-sizing: border-box;
   width: 30%;
   /* height: 200px; */
+  padding: 24px;
   /* padding: 60px 120px 40px 120px; */
   margin: 450px auto 0 auto;
   border: 2px solid rgb(99, 136, 79);
