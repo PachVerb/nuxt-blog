@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-21 01:42:42
+ * @LastEditTime: 2022-07-21 21:56:42
  * @Description: 
  * @Date: 2022-07-19 23:56:46
  * @Author: wangshan
@@ -11,6 +11,7 @@
       <NuxtPage></NuxtPage>
     </div>
 
+    <!-- 这里的数据通过emit触发更新 -->
     <aside>
       <div class="ranking-list bg">
         <h5>文章排行</h5>

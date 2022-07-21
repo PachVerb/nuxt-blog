@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-21 01:42:57
+ * @LastEditTime: 2022-07-21 22:18:02
  * @Description: 
  * @Date: 2022-07-20 22:53:49
  * @Author: wangshan
@@ -69,9 +69,15 @@ console.log(a.artitle.title, a.artitle.blog, a.artitle.tools);
 function handleViewDetail() {
   return navigateTo({
     path: "/post/detail",
-    params: {
-      id: "123",
+    name: "post-detail",
+    // params: {
+    //   names: "hello",
+    // },
+    query: {
+      // query参数传递
+      key: "23",
     },
+    // replace: true, // 替换history历史站的最后一次记录
   });
 }
 </script>
