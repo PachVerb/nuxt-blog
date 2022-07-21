@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-21 22:18:02
+ * @LastEditTime: 2022-07-21 22:48:37
  * @Description: 
  * @Date: 2022-07-20 22:53:49
  * @Author: wangshan
@@ -12,18 +12,12 @@
       <div class="content-wrapper">
         <div class="content-main">
           <div class="title-row">
-            <a
-              @click="handleViewDetail"
-              class="title"
-              href="javascript: void(0)"
-              >{{ artitle.blog.title }}</a
-            >
-            <a
-              @click="handleViewDetail"
-              class="sub-title"
-              href="javascript: void(0)"
-              >{{ artitle.blog.subtitle }}</a
-            >
+            <a class="title" href="javascript: void(0)">{{
+              artitle.blog.title
+            }}</a>
+            <a class="sub-title" href="javascript: void(0)">{{
+              artitle.blog.subtitle
+            }}</a>
           </div>
 
           <div class="abstract">{{ artitle.blog.abstract }}</div>
@@ -61,25 +55,7 @@ interface Posts {
     comment: number;
   };
 }
-const a = defineProps({ artitle: Object });
-
-console.log(a.artitle.title, a.artitle.blog, a.artitle.tools);
-
-// @methods
-function handleViewDetail() {
-  return navigateTo({
-    path: "/post/detail",
-    name: "post-detail",
-    // params: {
-    //   names: "hello",
-    // },
-    query: {
-      // query参数传递
-      key: "23",
-    },
-    // replace: true, // 替换history历史站的最后一次记录
-  });
-}
+defineProps({ artitle: Object });
 </script>
 
 <style scoped>
