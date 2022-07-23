@@ -6,13 +6,6 @@
           <img src="~/assets/imgs/logo.svg" alt="" />
         </div>
         <div class="menus">
-          <!-- <RouterLink :class="link" to="/"><span>首页</span></RouterLink>
-          <RouterLink class="link" to="/post/artitles"
-            ><span>日志</span></RouterLink
-          >
-          <RouterLink class="link" to="going"><span>旅游</span></RouterLink>
-          <RouterLink class="link" to="photo"><span>摄影</span></RouterLink> -->
-
           <RouterLink
             v-for="(item, idx) in links"
             :key="item.path"
@@ -21,28 +14,6 @@
             @click="handleActive(item, idx)"
             ><span>{{ item.name }}</span></RouterLink
           >
-          <div style="display: inline-block">
-            <Dropdown :icon="['iconfont icon-edit']">
-              <span>开始创作</span>
-              <template #overlay>
-                <Menu>
-                  <MenuItem
-                    @handleMenuItem="handleMenu"
-                    :icon="['iconfont icon-search']"
-                  >
-                    <span>helo</span>
-                  </MenuItem>
-
-                  <MenuItem
-                    @handleMenuItem="handleMenu"
-                    :icon="['iconfont icon-search']"
-                  >
-                    <span>helo</span>
-                  </MenuItem>
-                </Menu>
-              </template>
-            </Dropdown>
-          </div>
         </div>
       </div>
       <div class="c-nav h-nav column">
@@ -302,11 +273,3 @@ div.menu-trigger {
   line-height: 36px;
 }
 </style>
-<!-- <style scoped>
-@media screen and(max-width: 725px) {
-  .nav {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-}
-</style> -->
