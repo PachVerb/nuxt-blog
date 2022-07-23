@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-23 20:01:54
+ * @LastEditTime: 2022-07-24 02:22:01
  * @Description: 
  * @Date: 2022-07-18 21:49:09
  * @Author: wangshan
@@ -7,7 +7,7 @@
 -->
 <script setup lang="ts">
 definePageMeta({
-  layout: "custom",
+  layout: "base",
 });
 
 // method
@@ -18,7 +18,7 @@ function handleRead() {
 }
 </script>
 <template>
-  <NuxtLayout name="custom">
+  <NuxtLayout name="base">
     <div class="bg">
       <h1>WelCome website of PachVerb</h1>
 
