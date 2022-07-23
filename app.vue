@@ -22,9 +22,26 @@
             ><span>{{ item.name }}</span></RouterLink
           >
           <div style="display: inline-block">
-            <Button theme="warn" :icon="['iconfont icon-edit']"
-              >开始创作</Button
-            >
+            <Dropdown :icon="['iconfont icon-edit']">
+              <span>开始创作</span>
+              <template #overlay>
+                <Menu>
+                  <MenuItem
+                    @handleMenuItem="handleMenu"
+                    :icon="['iconfont icon-search']"
+                  >
+                    <span>helo</span>
+                  </MenuItem>
+
+                  <MenuItem
+                    @handleMenuItem="handleMenu"
+                    :icon="['iconfont icon-search']"
+                  >
+                    <span>helo</span>
+                  </MenuItem>
+                </Menu>
+              </template>
+            </Dropdown>
           </div>
         </div>
       </div>
@@ -71,7 +88,6 @@ definePageMeta({
   title: "app",
 });
 const iShow = ref(false);
-
 const links = ref([
   {
     path: "/",
@@ -95,11 +111,11 @@ const links = ref([
   },
 ]);
 
+// @method
 function handleActive(item, idx) {
   console.log(item, idx, item[idx]);
   links.value[idx].isactive = !item.isactive;
 }
-
 // togglle-menu
 function toggleMenu() {
   iShow.value = !iShow.value;
@@ -109,6 +125,9 @@ function toggleMenu() {
       ? (menu.style.display = "block")
       : (menu.style.display = "none");
   });
+}
+function handleMenu(e) {
+  console.log(e);
 }
 </script>
 
