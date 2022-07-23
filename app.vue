@@ -6,12 +6,6 @@
           <img src="~/assets/imgs/logo.svg" alt="" />
         </div>
         <div class="menus">
-          <!-- <RouterLink :class="link" to="/"><span>首页</span></RouterLink>
-          <RouterLink class="link" to="/post/artitles"
-            ><span>日志</span></RouterLink
-          >
-          <RouterLink class="link" to="going"><span>旅游</span></RouterLink>
-          <RouterLink class="link" to="photo"><span>摄影</span></RouterLink> -->
           <RouterLink
             v-for="(item, idx) in links"
             :key="item.path"
@@ -65,7 +59,6 @@ definePageMeta({
   title: "app",
 });
 const iShow = ref(false);
-
 const links = ref([
   {
     path: "/",
@@ -89,11 +82,11 @@ const links = ref([
   },
 ]);
 
+// @method
 function handleActive(item, idx) {
   console.log(item, idx, item[idx]);
   links.value[idx].isactive = !item.isactive;
 }
-
 // togglle-menu
 function toggleMenu() {
   iShow.value = !iShow.value;
@@ -103,6 +96,9 @@ function toggleMenu() {
       ? (menu.style.display = "block")
       : (menu.style.display = "none");
   });
+}
+function handleMenu(e) {
+  console.log(e);
 }
 </script>
 
@@ -277,11 +273,3 @@ div.menu-trigger {
   line-height: 36px;
 }
 </style>
-<!-- <style scoped>
-@media screen and(max-width: 725px) {
-  .nav {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-}
-</style> -->

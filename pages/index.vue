@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-20 22:21:42
+ * @LastEditTime: 2022-07-23 20:01:54
  * @Description: 
  * @Date: 2022-07-18 21:49:09
  * @Author: wangshan
@@ -9,6 +9,13 @@
 definePageMeta({
   layout: "custom",
 });
+
+// method
+function handleRead() {
+  return navigateTo({
+    path: "/post/artitles",
+  });
+}
 </script>
 <template>
   <NuxtLayout name="custom">
@@ -22,7 +29,9 @@ definePageMeta({
           能高效更新并渲染合适的组件。
         </p>
 
-        <button class="custom-btn btn-3"><span>Read More</span></button>
+        <button @click="handleRead" class="custom-btn btn-3">
+          <span>Read More</span>
+        </button>
       </div>
     </div>
   </NuxtLayout>

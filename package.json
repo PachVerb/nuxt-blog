@@ -4,10 +4,12 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "mdl": "showdown -i"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.5"
+    "nuxt": "3.0.0-rc.5",
+    "showdown": "^2.1.0"
   },
   "dependencies": {
     "animate.css": "^4.1.1"

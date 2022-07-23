@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-21 01:05:32
+ * @LastEditTime: 2022-07-21 22:50:58
  * @Description: 
  * @Date: 2022-07-18 21:41:25
  * @Author: wangshan
@@ -7,11 +7,27 @@
 -->
 <template>
   <div class="entry-list">
-    <Entry v-for="(item, idx) in blogs" :key="idx" :artitle="item"></Entry>
+    <Entry
+      @click="handleViewDetail(item)"
+      v-for="(item, idx) in blogs"
+      :key="idx"
+      :artitle="item"
+    ></Entry>
   </div>
 </template>
 <script setup lang="ts">
 const blogs = ref(null);
+
+// @methods
+function handleViewDetail(item) {
+  return navigateTo({
+    path: "/post/detail",
+    query: {
+      key: "23",
+    },
+    // replace: true, // 替换history历史站的最后一次记录
+  });
+}
 
 onMounted(async () => {
   const res = await $fetch("/api/artitles");
