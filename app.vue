@@ -12,6 +12,7 @@
           >
           <RouterLink class="link" to="going"><span>旅游</span></RouterLink>
           <RouterLink class="link" to="photo"><span>摄影</span></RouterLink> -->
+
           <RouterLink
             v-for="(item, idx) in links"
             :key="item.path"
@@ -20,6 +21,11 @@
             @click="handleActive(item, idx)"
             ><span>{{ item.name }}</span></RouterLink
           >
+          <div style="display: inline-block">
+            <Button theme="warn" :icon="['iconfont icon-edit']"
+              >开始创作</Button
+            >
+          </div>
         </div>
       </div>
       <div class="c-nav h-nav column">
