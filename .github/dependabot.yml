@@ -1,0 +1,33 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+    assignees:  # 任务分配人
+      - "PachVerb"
+    reviewers: # pr 受理人
+      - “PachVerb”
+    commit-message: # 提交信息
+      # Prefix all commit messages with "npm"
+      prefix: "npm"
+     ignore: # 配置需要忽略的依赖
+      - dependency-name: "express"
+        # For Express, ignore all updates for version 4 and 5
+        versions: ["4.x", "5.x"]
+        # For Lodash, ignore all updates
+      - dependency-name: "lodash"
+        # For AWS SDK, ignore all patch updates
+      - dependency-name: "aws-sdk"
+        update-types: ["version-update:semver-patch"]
+    labels: # 标签信息
+      - "npm"
+      - "dependencies"
+    milestone: 4  # 关联里程碑
+    open-pull-requests-limit: 5 # pr数量限制
+      
