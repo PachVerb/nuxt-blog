@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 00:30:31
+ * @LastEditTime: 2022-07-25 00:42:41
  * @Description:  卡片
  * @Date: 2022-07-24 23:59:53
  * @Author: wangshan
@@ -31,19 +31,7 @@
   </div>
 </template>
 <script setup lang="ts">
-defineProps<{
-  width: {
-    type: typeof Number;
-  };
-  icon: {
-    type: typeof String;
-  };
-  title: typeof String;
-  bordered: {
-    type: typeof Boolean;
-    default: boolean;
-  };
-}>({
+defineProps({
   width: {
     type: Number,
   },

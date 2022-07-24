@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-24 02:10:29
+ * @LastEditTime: 2022-07-25 00:41:22
  * @Description: 
  * @Date: 2022-07-18 21:41:25
  * @Author: wangshan
@@ -18,6 +18,7 @@
       </div>
     </template>
     <template #aside>
+      <Card :title="('good' as String)"></Card>
       <div class="ranking-list bg">
         <h5>文章排行</h5>
       </div>
