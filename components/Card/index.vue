@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 00:42:41
+ * @LastEditTime: 2022-07-25 01:06:35
  * @Description:  卡片
  * @Date: 2022-07-24 23:59:53
  * @Author: wangshan
@@ -15,8 +15,8 @@
     <div class="card-head">
       <div class="card-head-wrap">
         <div class="card-title">
-          <span>{{ title }}</span>
           <i v-if="icon" :class="['iconfont', icon]"></i>
+          <span>{{ title }}</span>
         </div>
 
         <div class="extra">
@@ -70,6 +70,9 @@ defineProps({
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.card-wrap .card-head .card-head-wrap .card-title span {
+  margin-left: 5px;
 }
 .card-wrap .card-head .card-head-wrap .extra {
   float: right;
