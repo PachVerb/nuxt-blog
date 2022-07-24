@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 00:51:25
+ * @LastEditTime: 2022-07-25 01:11:13
  * @Description: 
  * @Date: 2022-07-18 21:41:25
  * @Author: wangshan
@@ -18,7 +18,12 @@
       </div>
     </template>
     <template #aside>
-      <Card title="文章排行" :bordered="true" style="margin-bottom: 12px">
+      <Card
+        title="文章排行"
+        :bordered="true"
+        icon="icon-jiangbei"
+        style="margin-bottom: 12px"
+      >
         <template #extra>more</template>
         <ul>
           <li>apple</li>
@@ -26,7 +31,12 @@
           <li>apple</li>
         </ul>
       </Card>
-      <Card title="最近话题" :bordered="true" style="margin-bottom: 12px">
+      <Card
+        icon="icon-zhifeiji"
+        title="最近话题"
+        :bordered="true"
+        style="margin-bottom: 12px"
+      >
         <template #extra>more</template>
         <ul>
           <li>前端</li>
@@ -35,7 +45,12 @@
           <li>旅游</li>
         </ul>
       </Card>
-      <Card title="语言" :bordered="true" style="margin-bottom: 12px">
+      <Card
+        icon="icon-f-fire"
+        title="语言"
+        :bordered="true"
+        style="margin-bottom: 12px"
+      >
         <template #extra>more</template>
         <ul>
           <li>html ----- 25%</li>

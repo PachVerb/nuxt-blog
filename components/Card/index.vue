@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 01:06:35
+ * @LastEditTime: 2022-07-25 01:10:18
  * @Description:  卡片
  * @Date: 2022-07-24 23:59:53
  * @Author: wangshan
@@ -15,7 +15,11 @@
     <div class="card-head">
       <div class="card-head-wrap">
         <div class="card-title">
-          <i v-if="icon" :class="['iconfont', icon]"></i>
+          <i
+            style="font-size: 24px"
+            v-if="icon"
+            :class="['iconfont', icon]"
+          ></i>
           <span>{{ title }}</span>
         </div>
 
