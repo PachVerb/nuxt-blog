@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-24 02:10:29
+ * @LastEditTime: 2022-07-25 01:11:13
  * @Description: 
  * @Date: 2022-07-18 21:41:25
  * @Author: wangshan
@@ -18,21 +18,40 @@
       </div>
     </template>
     <template #aside>
-      <div class="ranking-list bg">
-        <h5>文章排行</h5>
-      </div>
-      <div class="ranking-topic bg">
-        <h5>最近话题</h5>
-
+      <Card
+        title="文章排行"
+        :bordered="true"
+        icon="icon-jiangbei"
+        style="margin-bottom: 12px"
+      >
+        <template #extra>more</template>
+        <ul>
+          <li>apple</li>
+          <li>apple</li>
+          <li>apple</li>
+        </ul>
+      </Card>
+      <Card
+        icon="icon-zhifeiji"
+        title="最近话题"
+        :bordered="true"
+        style="margin-bottom: 12px"
+      >
+        <template #extra>more</template>
         <ul>
           <li>前端</li>
           <li>后端</li>
           <li>摄影</li>
           <li>旅游</li>
         </ul>
-      </div>
-      <div class="ranking-skills bg">
-        <h5>语言</h5>
+      </Card>
+      <Card
+        icon="icon-f-fire"
+        title="语言"
+        :bordered="true"
+        style="margin-bottom: 12px"
+      >
+        <template #extra>more</template>
         <ul>
           <li>html ----- 25%</li>
           <li>JS ---- 35%</li>
@@ -41,7 +60,7 @@
           <li>Golang -----16%</li>
           <li>C ----- 39%</li>
         </ul>
-      </div>
+      </Card>
     </template>
   </NuxtLayout>
 </template>
