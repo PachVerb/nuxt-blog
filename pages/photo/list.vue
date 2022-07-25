@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-26 00:31:53
+ * @LastEditTime: 2022-07-26 02:03:53
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -8,25 +8,26 @@
 <template>
   <div class="photo-list">
     <WaterFall @wscroll="handleScroll">
-      <Card size="small" class="control">
+      <Card
+        v-for="(item, idx) in plist"
+        :key="idx"
+        size="small"
+        class="control"
+      >
         <div class="item">
-          <img
-            src="https://images.unsplash.com/photo-1637917972588-9925c58e5a25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
-            alt=""
-          />
+          <img :src="item.imgUrl" alt="" />
         </div>
         <div class="menu-card">
           <div class="menu-inner">
             <p>
-              我们已经说完了这三种方案，其实绝大部分的商业级都是js实现的瀑布流，比如isotope等插件。本质实现起来并不麻烦，我们有时间可以自己封装一套，在vue上怎么用，在react上怎么用，怎么过滤，怎么通过用关键词去排序改变顺序等等，都可以考虑进去。算是比较常见功能所以自己试试看也没坏处，自己动手丰衣足食么~
-              作者
+              {{ item.descriptino }}
             </p>
             <Button class="view">查看</Button>
           </div>
         </div>
       </Card>
 
-      <div class="item">
+      <!-- <div class="item">
         <img
           src="https://images.unsplash.com/photo-1637930563495-fafd99a5d6b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
           alt=""
@@ -193,14 +194,23 @@
           src="https://images.unsplash.com/photo-1637928148681-f187292003a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0M3x8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
           alt=""
         />
-      </div>
+      </div> -->
     </WaterFall>
   </div>
 </template>
 <script setup>
-function handleScroll(e) {
-  console.log("滚动到底了", e);
-}
+const plist = ref([]); // 相册列表
+const total = ref(0); // 总数
+const page = ref(0); // 页码
+
+const handleScroll = async (e) => {
+  if (plist.length >= total) return;
+  const res = await $fetch(`/api/plist?page=${page.value}&size=${10}`);
+  plist.value.push(res.data.list);
+  total = res.data.total;
+  page++;
+  console.log(res.data.length);
+};
 </script>
 <style scoped>
 .photo-list {

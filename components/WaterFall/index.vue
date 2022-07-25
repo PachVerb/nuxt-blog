@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 21:09:55
+ * @LastEditTime: 2022-07-26 02:05:27
  * @Description: 
  * @Date: 2022-07-25 09:04:59
  * @Author: wangshan
@@ -35,6 +35,10 @@ function regisScollhanler(e) {
 }
 
 onMounted(() => {
+  const wrapper = document.querySelector(".img-wrapper");
+  if (!wrapper.children.length) {
+    return;
+  }
   nextTick(() => {
     setTimeout(() => {
       new WatefFall({
