@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 09:54:24
+ * @LastEditTime: 2022-07-25 09:57:21
  * @Description: 
  * @Date: 2022-07-25 09:04:59
  * @Author: wangshan
@@ -17,7 +17,10 @@ import WatefFall from "./utils/waterfall.js";
 const emit = defineEmits(["wscroll"]);
 function handleScroll(e) {
   // 滚动距离刷新 > 10像素刷新
-  if (document.body.scrollHeight - document.body.scrollTop > 10) {
+  if (
+    document.body.scrollTop > 0 &&
+    document.body.scrollHeight - document.body.scrollTop > 10
+  ) {
     emit("wscroll", e);
   }
 }
