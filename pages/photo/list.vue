@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 20:15:15
+ * @LastEditTime: 2022-07-25 23:56:36
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -8,12 +8,15 @@
 <template>
   <div class="photo-list">
     <WaterFall @wscroll="handleScroll">
-      <div class="item">
-        <img
-          src="https://images.unsplash.com/photo-1637917972588-9925c58e5a25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
-          alt=""
-        />
-      </div>
+      <Card size="small">
+        <div class="item">
+          <img
+            src="https://images.unsplash.com/photo-1637917972588-9925c58e5a25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
+            alt=""
+          />
+        </div>
+      </Card>
+
       <div class="item">
         <img
           src="https://images.unsplash.com/photo-1637930563495-fafd99a5d6b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
@@ -199,16 +202,9 @@ function handleScroll(e) {
   justify-content: space-between;
   /* overflow: hidden; */
 }
-.photo-list .queue {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0.5vw;
-  flex-basis: calc(100% / 4);
-}
 .photo-list .item {
   position: relative;
   width: 100%;
-  margin: 0.5vw 0;
 }
 .photo-list img {
   width: 100%;
