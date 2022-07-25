@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-26 00:16:18
+ * @LastEditTime: 2022-07-26 00:30:20
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -15,7 +15,15 @@
             alt=""
           />
         </div>
-        <div class="menu-card">hello</div>
+        <div class="menu-card">
+          <div class="menu-inner">
+            <p>
+              我们已经说完了这三种方案，其实绝大部分的商业级都是js实现的瀑布流，比如isotope等插件。本质实现起来并不麻烦，我们有时间可以自己封装一套，在vue上怎么用，在react上怎么用，怎么过滤，怎么通过用关键词去排序改变顺序等等，都可以考虑进去。算是比较常见功能所以自己试试看也没坏处，自己动手丰衣足食么~
+              作者
+            </p>
+            <Button class="view">查看</Button>
+          </div>
+        </div>
       </Card>
 
       <div class="item">
@@ -220,11 +228,27 @@ function handleScroll(e) {
   display: none;
   width: 100%;
   height: 100%;
+  padding: 12px;
+  box-sizing: border-box;
   /* -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
     both;
   animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both; */
   -webkit-animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+.menu-card .menu-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+.menu-card .menu-inner p {
+  color: #f2f3f3;
+  text-align: center;
+}
+.menu-card .menu-inner .view {
+  margin-top: 24px;
 }
 .control:hover .menu-card {
   background: rgba(9, 186, 230, 0.757);
