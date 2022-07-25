@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-26 02:05:27
+ * @LastEditTime: 2022-07-26 02:14:11
  * @Description: 
  * @Date: 2022-07-25 09:04:59
  * @Author: wangshan
@@ -35,10 +35,12 @@ function regisScollhanler(e) {
 }
 
 onMounted(() => {
+  window.addEventListener("scroll", throttle(handleScroll, 300));
   const wrapper = document.querySelector(".img-wrapper");
-  if (!wrapper.children.length) {
-    return;
-  }
+  //   if (!wrapper || !wrapper.children.length) {
+  //     return;
+  //   }
+
   nextTick(() => {
     setTimeout(() => {
       new WatefFall({
@@ -48,8 +50,6 @@ onMounted(() => {
       });
     }, 100);
   });
-
-  window.addEventListener("scroll", throttle(handleScroll, 300));
 });
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", throttle(handleScroll, 300));

@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-26 02:03:53
+ * @LastEditTime: 2022-07-26 02:20:00
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -204,12 +204,12 @@ const total = ref(0); // 总数
 const page = ref(0); // 页码
 
 const handleScroll = async (e) => {
-  if (plist.length >= total) return;
+  if (plist.value.length != 0 && plist.value.length >= total.value) return;
   const res = await $fetch(`/api/plist?page=${page.value}&size=${10}`);
-  plist.value.push(res.data.list);
-  total = res.data.total;
-  page++;
-  console.log(res.data.length);
+  plist.value.push(...res.data.list);
+  total.value = res.data.total;
+  page.value++;
+  console.log(res, e, plist);
 };
 </script>
 <style scoped>
