@@ -16,7 +16,7 @@ updates:
     commit-message: # 提交信息
       # Prefix all commit messages with "npm"
       prefix: "npm"
-     ignore: # 配置需要忽略的依赖
+    ignore: # 配置需要忽略的依赖
       - dependency-name: "express"
         # For Express, ignore all updates for version 4 and 5
         versions: ["4.x", "5.x"]
@@ -30,4 +30,3 @@ updates:
       - "dependencies"
     milestone: 4  # 关联里程碑
     open-pull-requests-limit: 5 # pr数量限制
-      
