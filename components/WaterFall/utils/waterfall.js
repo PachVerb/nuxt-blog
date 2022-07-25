@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-25 09:05:29
+ * @LastEditTime: 2022-07-25 10:35:02
  * @Description: js + absolute方案实现瀑布流
  * @Date: 2022-07-25 09:05:28
  * @Author: wangshan
@@ -41,9 +41,15 @@ export default class Waterfall {
         item.style.top = H[tag] + "px";
         H[tag] += (img.height * width) / img.width + gap;
         flag.appendChild(item);
+        console.log(this.$el);
+
+        let minHeight = Math.max(...H);
+        this.$el.style.minHeight = minHeight + "px";
       } else {
         img.addEventListener("load", () => {
           let tag = H.indexOf(Math.min(...H));
+          let minHeight = Max.max(...H);
+          this.$el.style.minHeight = minHeight + "px";
           item.style.left = tag * (width + gap) + "px";
           item.style.top = H[tag] + "px";
           H[tag] += (img.height * width) / img.width + gap;
@@ -54,4 +60,24 @@ export default class Waterfall {
     });
     this.$el.append(flag);
   }
+}
+
+export function throttle(fn, threshhold = 200) {
+  let timeout;
+  // 计算开始时间
+  let start = new Date();
+  return function () {
+    // 触发时间
+    const current = new Date() - 0;
+    timeout && clearTimeout(timeout);
+    // 如果到了时间间隔点，就执行一次回调
+    if (current - start >= threshhold) {
+      fn.call(this, ...arguments);
+      // 更新开始时间
+      start = current;
+    } else {
+      // 保证方法在脱离事件以后还会执行一次
+      timeout = setTimeout(fn.bind(this), threshhold, ...arguments);
+    }
+  };
 }

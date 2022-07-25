@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 09:57:21
+ * @LastEditTime: 2022-07-25 10:37:31
  * @Description: 
  * @Date: 2022-07-25 09:04:59
  * @Author: wangshan
@@ -11,16 +11,17 @@
   </div>
 </template>
 <script setup>
-import WatefFall from "./utils/waterfall.js";
+import WatefFall, { throttle } from "./utils/waterfall.js";
 
 // method
 const emit = defineEmits(["wscroll"]);
 function handleScroll(e) {
+  console.log(document.querySelector(".img-wrapper").scrollTop);
   // 滚动距离刷新 > 10像素刷新
-  if (
-    document.body.scrollTop > 0 &&
-    document.body.scrollHeight - document.body.scrollTop > 10
-  ) {
+  const scrollEnd =
+    window.innerHeight + window.scrollY >=
+    document.querySelector(".img-wrapper").offsetHeight;
+  if (scrollEnd) {
     emit("wscroll", e);
   }
 }
@@ -32,7 +33,7 @@ onMounted(() => {
     gap: 10,
   });
 
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", throttle(handleScroll, 300));
 });
 onBeforeUnmount(() => {});
 </script>
@@ -40,5 +41,6 @@ onBeforeUnmount(() => {});
 .img-wrapper {
   position: relative;
   width: 100%;
+  min-height: 100vh;
 }
 </style>
