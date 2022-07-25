@@ -41,11 +41,13 @@
           }"
         >
           <RouterLink class="link" to="/"><span>首页</span></RouterLink>
-          <RouterLink class="link" to="/post/artitles"
-            ><span>日志</span></RouterLink
-          >
+          <RouterLink class="link" to="/post/artitles">
+            <span>日志</span>
+          </RouterLink>
+          <RouterLink class="link" to="/photo/list">
+            <span>摄影</span>
+          </RouterLink>
           <RouterLink class="link" to="going"><span>旅游</span></RouterLink>
-          <RouterLink class="link" to="photo"><span>摄影</span></RouterLink>
         </div>
       </div>
     </template>
@@ -76,7 +78,7 @@ const links = ref([
     name: "旅游",
   },
   {
-    path: "/photo",
+    path: "/photo/list",
     isactive: false,
     name: "摄影",
   },
