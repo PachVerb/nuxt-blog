@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 18:46:06
+ * @LastEditTime: 2022-07-25 21:09:55
  * @Description: 
  * @Date: 2022-07-25 09:04:59
  * @Author: wangshan
@@ -10,21 +10,28 @@
     <slot></slot>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import { nextTick } from "vue";
 import WatefFall, { throttle } from "./utils/waterfall.js";
+
+// data
+const initTop = ref<number>(0);
 
 // method
 const emit = defineEmits(["wscroll"]);
 function handleScroll(e) {
+  //   console.log(document.body.scrollTop);
   // 滚动距离刷新 > 10像素刷新
   const scrollEnd =
-    window.innerHeight + window.scrollY >=
-      document.querySelector(".img-wrapper") &&
-    document.querySelector(".img-wrapper").offsetHeight;
+    window.innerHeight + window.scrollY >= document.body.offsetHeight;
   if (scrollEnd) {
     emit("wscroll", e);
   }
+  initTop.value = window.screenTop;
+}
+
+function regisScollhanler(e) {
+  throttle(handleScroll)(e);
 }
 
 onMounted(() => {
@@ -41,7 +48,7 @@ onMounted(() => {
   window.addEventListener("scroll", throttle(handleScroll, 300));
 });
 onBeforeUnmount(() => {
-  window.removeEventListener("scroll", throttle(handleScroll));
+  window.removeEventListener("scroll", throttle(handleScroll, 300));
 });
 </script>
 <style scoped>

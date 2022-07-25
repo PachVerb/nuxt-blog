@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 18:43:08
+ * @LastEditTime: 2022-07-25 20:15:15
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -192,7 +192,7 @@ function handleScroll(e) {
 </script>
 <style scoped>
 .photo-list {
-  max-width: 1000px;
+  max-width: 1030px;
   margin: 0 auto;
   margin-top: 12px;
   display: flex;
