@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 18:46:06
+ * @LastEditTime: 2022-07-25 20:01:00
  * @Description: 
  * @Date: 2022-07-25 09:04:59
  * @Author: wangshan
@@ -19,9 +19,7 @@ const emit = defineEmits(["wscroll"]);
 function handleScroll(e) {
   // 滚动距离刷新 > 10像素刷新
   const scrollEnd =
-    window.innerHeight + window.scrollY >=
-      document.querySelector(".img-wrapper") &&
-    document.querySelector(".img-wrapper").offsetHeight;
+    window.innerHeight + window.scrollY == document.body.offsetHeight;
   if (scrollEnd) {
     emit("wscroll", e);
   }
@@ -38,7 +36,7 @@ onMounted(() => {
     }, 100);
   });
 
-  window.addEventListener("scroll", throttle(handleScroll, 300));
+  window.addEventListener("scroll", throttle(handleScroll, 500));
 });
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", throttle(handleScroll));

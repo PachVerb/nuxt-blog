@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-25 18:37:23
+ * @LastEditTime: 2022-07-25 20:06:27
  * @Description: js + absolute方案实现瀑布流
  * @Date: 2022-07-25 09:05:28
  * @Author: wangshan
@@ -43,21 +43,24 @@ export default class Waterfall {
         item.style.top = H[tag] + "px";
         H[tag] += (img.height * width) / img.width + gap;
         flag.appendChild(item);
-
-        let minHeight = Math.max(...H);
-
-        this.$el.style.minHeight = minHeight + "px";
+        setTimeout(() => {
+          let minHeight = Math.max(...H);
+          this.$el.style.minHeight = minHeight + "px";
+        }, 500);
       } else {
         // 监听图片加载
         img.addEventListener("load", () => {
           let tag = H.indexOf(Math.min(...H));
-          let minHeight = Math.max(...H);
-          this.$el.style.minHeight = minHeight + "px";
+
           item.style.left = tag * (width + gap) + "px";
           item.style.top = H[tag] + "px";
           H[tag] += (img.height * width) / img.width + gap;
           flag.appendChild(item);
           this.$el.append(flag);
+          setTimeout(() => {
+            let minHeight = Math.max(...H);
+            this.$el.style.minHeight = minHeight + "px";
+          }, 500);
         });
       }
     });
