@@ -1,0 +1,266 @@
+{
+  "state": true,
+  "code": 200,
+  "data": [
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=486075898,4151694835&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=313",
+      "description": "最近碰到一个神奇的网站，在浏览器可以打开，但是通过 curl 或者 代码访问就直接 403，我估摸着这肯定是做了UA校验，于是请求的时候把浏览器的 UA 给带上，然后访问发现还是 403，不过这也难不倒我，肯定是还有校验其它的请求头，直接浏览器打开 network，把所有的请求头复制过来并且带上"
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=2662352587,1685801489&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+      "description": "也就是说 cloudflare 会维护一组浏览器的 TLS 指纹，当收到一个 Client Hello 请求时，会检查这组指纹，如果匹配不上，就会拦截这个请求，这样可以拦截掉大部分不是来自浏览器的请求了。"
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=1319384230,3894683427&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+      "description": "虽然已经成功请求了，但是本着探索的精神继续深入发现 cloudflare 官方有一篇博客就是专门介绍这个 TLS 拦截技术的，链接如下"
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=4243898418,2159441620&fm=253&fmt=auto&app=120&f=PNG?w=583&h=386",
+      "description": "上面说到了一定要走 http2 协议，而现在市面上流行的 http client 基本都是只支持 http1.1，所以只能直接从基础库入手了，官方有一个http2的库，一番调教之后也是成功请求了，代码如下："
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=3539929745,3566179881&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281",
+      "description": "马上 google 了下如何指定 curl 的 TLS 版本，发现只需要加上--tlsv1.3参数就可以了"
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=110648152,1575583647&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=270",
+      "description": "可以看到两边的报文确实存在很大的差异，逐一对比排查之后发现很有可能是因为 curl 的请求报文里缺少supported_versions扩展信息导致的 403，浏览器那边在此扩展信息内容如图"
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=2425397302,3782154253&fm=253&fmt=auto&app=138&f=JPEG?w=470&h=357",
+      "description": "表示支持TLSv1.2和TLSv1.3，而且最终握手之后的协议也是切换到了TLSv1.3，在上面两个对比图可以看到，浏览器走的是TLSv1.3，而 curl 走的是TLSv1.2，可能是一定要使用TLSv1.3才能访问成功"
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=1589263407,1631938628&fm=253&fmt=auto&app=138&f=JPEG?w=270&h=185",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=765645137,1919060261&fm=253&fmt=auto&app=138&f=JPEG?w=504&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=3461632760,3481591213&fm=253&fmt=auto&app=138&f=JPEG?w=700&h=393",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=1084897323,2513551390&fm=253&fmt=auto&app=138&f=JPEG?w=589&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=1978623115,3427293908&fm=253&fmt=auto&app=138&f=PNG?w=500&h=280",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=3640114267,2894712956&fm=253&fmt=auto&app=138&f=JPEG?w=584&h=328",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=1074380126,1294250081&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=3100124239,4168489358&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=266",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=118276702,474124254&fm=253&fmt=auto&app=138&f=JPEG?w=202&h=318",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=1978623115,3427293908&fm=253&fmt=auto&app=138&f=PNG?w=500&h=280",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=3499065968,1876090692&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=2510642152,2034880387&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=200",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=1740768319,2296763437&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=2073298697,2237708252&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=266",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=1002634979,2559526012&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=613",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=1546468602,2192080224&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=3805781192,2020273527&fm=253&fmt=auto&app=138&f=JPG?w=461&h=1000",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=3384136729,1825827789&fm=253&fmt=auto&app=138&f=JPEG?w=690&h=390",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=924681525,280583556&fm=253&fmt=auto&app=138&f=JPEG?w=231&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=2118371348,2910288711&fm=253&fmt=auto&app=120&f=JPEG?w=600&h=600",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=952132219,2672755376&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=260797494,776915327&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=158562056,22340437&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=400",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=531387117,180556746&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=750",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=3411398280,412315358&fm=253&fmt=auto&app=138&f=JPEG?w=671&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=257639336,3337456056&fm=253&fmt=auto&app=138&f=JPEG?w=640&h=414",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=2118371348,2910288711&fm=253&fmt=auto&app=120&f=JPEG?w=600&h=600",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=1049744159,1953562555&fm=253&fmt=auto?w=500&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=531387117,180556746&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=750",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=1242868778,3694907718&fm=253&fmt=auto&app=138&f=JPEG?w=499&h=427",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=1531110211,2946566502&fm=253&fmt=auto&app=138&f=GIF?w=667&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=1100667011,3013260408&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=3754833247,1902320265&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=750",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=947868789,283292113&fm=253&fmt=auto&app=138&f=JPEG?w=499&h=367",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=3631571866,3787872991&fm=253&fmt=auto&app=138&f=JPEG?w=801&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=2183581008,565225464&fm=253&fmt=auto&app=138&f=JPEG?w=250&h=350",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=2198370634,1067659716&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=506",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=2920501369,2879444177&fm=253&fmt=auto&app=138&f=JPEG?w=895&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=540564032,2238546809&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=260348611,1915298006&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=1358461753,2165828371&fm=253&fmt=auto&app=138&f=PNG?w=731&h=430",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=1847970314,2449096037&fm=253&fmt=auto&app=138&f=JPEG?w=440&h=441",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=1438133147,3922256162&fm=253&fmt=auto&app=138&f=JPEG?w=480&h=270",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=2160995455,2467037059&fm=253&fmt=auto&app=138&f=JPEG?w=728&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=2189659215,2766837667&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=824",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=1972637284,1570293103&fm=253&fmt=auto&app=138&f=JPEG?w=376&h=374",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=351350554,3597041473&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=467",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=3201786526,3264388624&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=437",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=3073549746,3966670397&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=200",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=2718893444,4219715480&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=511",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=3827484398,1079534831&fm=253&fmt=auto&app=138&f=JPEG?w=480&h=270",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=2957971316,3688581137&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=299",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=2074452455,1872111161&fm=253&fmt=auto&app=138&f=JPEG?w=231&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img2.baidu.com/it/u=2220799457,3534364881&fm=253&fmt=auto&app=138&f=JPEG?w=585&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=552674734,1747301581&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=750",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=1745806085,2544995956&fm=253&fmt=auto&app=138&f=GIF?w=329&h=300",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img0.baidu.com/it/u=2918778727,3515359766&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+      "description": ""
+    },
+    {
+      "imgUrl": "https://img1.baidu.com/it/u=2685887068,3043521124&fm=253&fmt=auto&app=138&f=JPEG?w=267&h=499",
+      "description": ""
+    }
+  ]
+}

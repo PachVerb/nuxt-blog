@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-26 00:30:20
+ * @LastEditTime: 2022-07-26 00:31:53
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -249,6 +249,7 @@ function handleScroll(e) {
 }
 .menu-card .menu-inner .view {
   margin-top: 24px;
+  margin-bottom: 8px;
 }
 .control:hover .menu-card {
   background: rgba(9, 186, 230, 0.757);
