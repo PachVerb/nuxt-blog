@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 23:56:36
+ * @LastEditTime: 2022-07-26 00:16:18
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -8,13 +8,14 @@
 <template>
   <div class="photo-list">
     <WaterFall @wscroll="handleScroll">
-      <Card size="small">
+      <Card size="small" class="control">
         <div class="item">
           <img
             src="https://images.unsplash.com/photo-1637917972588-9925c58e5a25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
             alt=""
           />
         </div>
+        <div class="menu-card">hello</div>
       </Card>
 
       <div class="item">
@@ -208,5 +209,42 @@ function handleScroll(e) {
 }
 .photo-list img {
   width: 100%;
+}
+.control {
+  position: relative;
+}
+.menu-card {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  /* -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both; */
+  -webkit-animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+.control:hover .menu-card {
+  background: rgba(9, 186, 230, 0.757);
+  display: block;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>
