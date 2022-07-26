@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 01:10:18
+ * @LastEditTime: 2022-07-25 23:55:27
  * @Description:  卡片
  * @Date: 2022-07-24 23:59:53
  * @Author: wangshan
@@ -12,7 +12,7 @@
     :style="{ width: width + 'px' }"
     :class="{ showb: bordered }"
   >
-    <div class="card-head">
+    <div class="card-head" v-if="title">
       <div class="card-head-wrap">
         <div class="card-title">
           <i
@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body" :class="{ small: size }">
       <slot></slot>
     </div>
   </div>
@@ -47,6 +47,7 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  size: String,
 });
 </script>
 <style scoped>
@@ -90,5 +91,10 @@ defineProps({
 /* bordered */
 .showb {
   border: 1px solid #f0f0f0;
+}
+
+/* size */
+.small {
+  padding: 5px !important;
 }
 </style>
