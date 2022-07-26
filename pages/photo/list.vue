@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-26 22:45:56
+ * @LastEditTime: 2022-07-26 23:37:17
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -20,7 +20,7 @@
         <div class="menu-card">
           <div class="menu-inner">
             <p>
-              {{ item.descriptino }}
+              {{ item.description }}
             </p>
             <Button class="view">查看</Button>
           </div>
@@ -253,8 +253,15 @@ const handleScroll = async (e) => {
   height: 100%;
 }
 .menu-card .menu-inner p {
+  width: 100%;
+  height: 50px;
   color: #f2f3f3;
-  text-align: center;
+  /* text-align: center; */
+  overflow: hidden;
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .menu-card .menu-inner .view {
   margin-top: 24px;
