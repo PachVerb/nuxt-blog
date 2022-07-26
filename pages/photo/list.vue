@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-26 02:20:00
+ * @LastEditTime: 2022-07-26 22:45:56
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -7,7 +7,7 @@
 -->
 <template>
   <div class="photo-list">
-    <WaterFall @wscroll="handleScroll">
+    <WaterFall @wscroll="handleScroll" :key="page">
       <Card
         v-for="(item, idx) in plist"
         :key="idx"
@@ -26,7 +26,6 @@
           </div>
         </div>
       </Card>
-
       <!-- <div class="item">
         <img
           src="https://images.unsplash.com/photo-1637930563495-fafd99a5d6b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
