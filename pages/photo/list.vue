@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-25 20:15:15
+ * @LastEditTime: 2022-07-26 23:37:17
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -7,14 +7,26 @@
 -->
 <template>
   <div class="photo-list">
-    <WaterFall @wscroll="handleScroll">
-      <div class="item">
-        <img
-          src="https://images.unsplash.com/photo-1637917972588-9925c58e5a25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
-          alt=""
-        />
-      </div>
-      <div class="item">
+    <WaterFall @wscroll="handleScroll" :key="page">
+      <Card
+        v-for="(item, idx) in plist"
+        :key="idx"
+        size="small"
+        class="control"
+      >
+        <div class="item">
+          <img :src="item.imgUrl" alt="" />
+        </div>
+        <div class="menu-card">
+          <div class="menu-inner">
+            <p>
+              {{ item.description }}
+            </p>
+            <Button class="view">查看</Button>
+          </div>
+        </div>
+      </Card>
+      <!-- <div class="item">
         <img
           src="https://images.unsplash.com/photo-1637930563495-fafd99a5d6b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
           alt=""
@@ -181,14 +193,23 @@
           src="https://images.unsplash.com/photo-1637928148681-f187292003a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0M3x8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
           alt=""
         />
-      </div>
+      </div> -->
     </WaterFall>
   </div>
 </template>
 <script setup>
-function handleScroll(e) {
-  console.log("滚动到底了", e);
-}
+const plist = ref([]); // 相册列表
+const total = ref(0); // 总数
+const page = ref(0); // 页码
+
+const handleScroll = async (e) => {
+  if (plist.value.length != 0 && plist.value.length >= total.value) return;
+  const res = await $fetch(`/api/plist?page=${page.value}&size=${10}`);
+  plist.value.push(...res.data.list);
+  total.value = res.data.total;
+  page.value++;
+  console.log(res, e, plist);
+};
 </script>
 <style scoped>
 .photo-list {
@@ -199,18 +220,72 @@ function handleScroll(e) {
   justify-content: space-between;
   /* overflow: hidden; */
 }
-.photo-list .queue {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0.5vw;
-  flex-basis: calc(100% / 4);
-}
 .photo-list .item {
   position: relative;
   width: 100%;
-  margin: 0.5vw 0;
 }
 .photo-list img {
   width: 100%;
+}
+.control {
+  position: relative;
+}
+.menu-card {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  /* -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both; */
+  -webkit-animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+.menu-card .menu-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+.menu-card .menu-inner p {
+  width: 100%;
+  height: 50px;
+  color: #f2f3f3;
+  /* text-align: center; */
+  overflow: hidden;
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.menu-card .menu-inner .view {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.control:hover .menu-card {
+  background: rgba(9, 186, 230, 0.757);
+  display: block;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

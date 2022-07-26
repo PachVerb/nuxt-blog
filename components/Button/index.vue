@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-23 18:57:15
+ * @LastEditTime: 2022-07-26 00:20:39
  * @Description: 
  * @Date: 2022-07-22 00:42:52
  * @Author: wangshan
@@ -20,7 +20,7 @@
     <button v-if="shape !== 'circle'" class="p-btn">
       <slot></slot>
     </button>
-    <slot name="icon">
+    <slot name="icon" v-if="icon">
       <span class="icon-wrap" style="marginleft: '12px'">
         <i style="color: #fff" :class="icon"></i>
       </span>
