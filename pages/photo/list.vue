@@ -1,5 +1,5 @@
 <!--
- * @LastEditTime: 2022-07-26 23:37:17
+ * @LastEditTime: 2022-07-27 01:14:02
  * @Description: 
  * @Date: 2022-07-25 07:32:51
  * @Author: wangshan
@@ -26,6 +26,7 @@
           </div>
         </div>
       </Card>
+
       <!-- <div class="item">
         <img
           src="https://images.unsplash.com/photo-1637930563495-fafd99a5d6b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
@@ -195,12 +196,25 @@
         />
       </div> -->
     </WaterFall>
+    <viewer :images="images" class="viewer" ref="viewer">
+      <!-- <template #default="scope"> -->
+      <img v-for="src in images" :src="src" :key="src" />
+      <!-- {{ scope.options }} -->
+      <!-- </template> -->
+    </viewer>
   </div>
 </template>
 <script setup>
+import { viewer } from "v-viewer";
 const plist = ref([]); // 相册列表
 const total = ref(0); // 总数
 const page = ref(0); // 页码
+
+const images = ref([
+  "https://picsum.photos/200/200",
+  "https://picsum.photos/300/200",
+  "https://picsum.photos/250/200",
+]);
 
 const handleScroll = async (e) => {
   if (plist.value.length != 0 && plist.value.length >= total.value) return;
