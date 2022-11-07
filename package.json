@@ -8,7 +8,7 @@
     "mdl": "showdown -i"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.12",
+    "nuxt": "3.0.0-rc.13",
     "showdown": "^2.1.0"
   },
   "dependencies": {
